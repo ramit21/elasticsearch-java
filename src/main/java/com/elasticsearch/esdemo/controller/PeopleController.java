@@ -60,12 +60,12 @@ public class PeopleController {
 		  //Build a json object	
 		  XContentBuilder builder = XContentFactory.jsonBuilder()
 				  .startObject()
-				  .field("fullName", name)
+				  .field("name", name)
 				  .field("age", age)
 				  .field("dtCreated", new Date())
 				  .endObject();
 				 
-		  IndexRequest indexRequest = new IndexRequest("people");
+		  IndexRequest indexRequest = new IndexRequest("people1");
 		  indexRequest.source(builder);
 		 
 		  IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
