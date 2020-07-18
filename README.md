@@ -20,5 +20,9 @@ http://localhost:8080/create/Ramit/21
 ```
 http://localhost:8080/getAll
 ```
+5. To delete the index entirely:
+```
+http://localhost:8080/delete
+```
 
 
