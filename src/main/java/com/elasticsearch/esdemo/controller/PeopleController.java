@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.elasticsearch.action.DocWriteResponse.Result;
+import org.elasticsearch.action.delete.DeleteRequest;
+import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchRequest;
@@ -54,6 +57,17 @@ public class PeopleController {
 		return results;
 	}
 
+	@RequestMapping(value="/delete")
+	@ResponseBody
+	public Result deleteAll() throws IOException{
+		DeleteRequest deleteRequest = new DeleteRequest("people");
+		String []arr = deleteRequest.indices();
+		System.out.println(arr);
+		//DeleteResponse deleteResponse = client.delete(deleteRequest, RequestOptions.DEFAULT);
+		//return deleteResponse.getResult();
+		return null;
+	}
+	
 	private IndexResponse createDataintoEs(String name, String age){
 		System.out.println("Inserting json data into ES .... ");
 		try{

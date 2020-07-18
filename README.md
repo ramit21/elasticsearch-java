@@ -7,6 +7,10 @@ Steps to run this POC:
 ```
 docker run -d --name es762 -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.6.2
 ```
+Verify ES installation by hitting the url:
+```
+http://localhost:9200/
+```
 2. mvn install, then start the springboot application.
 3. Invoke insert data controller and see the response on the browser. eg:
 ```
