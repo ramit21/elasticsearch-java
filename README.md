@@ -20,7 +20,11 @@ http://localhost:8080/create/Ramit/21
 ```
 http://localhost:8080/getAll
 ```
-5. To delete the index entirely:
+5. Example of search using query builders:
+```
+http://localhost:8080/getByAge/30/40
+```
+6. To delete the index entirely:
 ```
 http://localhost:8080/delete
 ```

@@ -11,12 +11,15 @@ import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.action.support.master.AcknowledgedResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -57,6 +60,25 @@ public class PeopleController {
 		return results;
 	}
 
+	//Search using QueryBuilders
+	@RequestMapping(value="/getByAge/{age1}/{age2}")
+	@ResponseBody
+	public List<Person> getByAgeRange(
+			@PathVariable("age1") Integer age1, @PathVariable("age2") Integer age2) throws IOException{
+		
+		SearchSourceBuilder builder = new SearchSourceBuilder()
+				  .postFilter(QueryBuilders.rangeQuery("age").from(age1).to(age2));		 
+		SearchRequest searchRequest = new SearchRequest(indexName);
+		searchRequest.searchType(SearchType.DFS_QUERY_THEN_FETCH);
+		searchRequest.source(builder);
+		SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
+		SearchHit[] searchHits = response.getHits().getHits();
+		List<Person> results = Arrays.stream(searchHits)
+					    .map(hit -> JSON.parseObject(hit.getSourceAsString(), Person.class))
+					    .collect(Collectors.toList());
+		return results;
+	}
+	
 	//Delete the index entirely
 	@RequestMapping(value="/delete")
 	@ResponseBody
