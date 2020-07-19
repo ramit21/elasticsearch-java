@@ -22,6 +22,8 @@ import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,11 +31,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.elasticsearch.esdemo.model.Person;
+import com.elasticsearch.esdemo.repo.PeopleRepo;
 
 @Controller
 public class PeopleController {
 	
 	private final String indexName = "people-idx";
+	
+	@Autowired
+	private PeopleRepo repo;
 	
 	@Autowired
 	@Qualifier("esClient")
@@ -77,6 +83,14 @@ public class PeopleController {
 					    .map(hit -> JSON.parseObject(hit.getSourceAsString(), Person.class))
 					    .collect(Collectors.toList());
 		return results;
+	}
+	
+	@RequestMapping(value="/getByName/{name}")
+	@ResponseBody
+	public List<Person> getByAgeName(@PathVariable("name") String name) throws IOException{
+		repo.findByName(name, PageRequest.of(0, 10));
+		Page<Person> result = repo.findByName(name, PageRequest.of(0, 10));
+		return result.toList();
 	}
 	
 	//Delete the index entirely

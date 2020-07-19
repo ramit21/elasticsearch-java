@@ -1,12 +1,15 @@
 package com.elasticsearch.esdemo.model;
 
-import java.util.Date;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 
+@Document(indexName = "people-idx")
 public class Person {
 
+	@Id
 	private String name;
 	private Integer age;
-	private Date dtCreated;
+	private String dtCreated;
 
 	public String getName() {
 		return name;
@@ -24,11 +27,11 @@ public class Person {
 		this.age = age;
 	}
 
-	public Date getDtCreated() {
+	public String getDtCreated() {
 		return dtCreated;
 	}
 
-	public void setDtCreated(Date dtCreated) {
+	public void setDtCreated(String dtCreated) {
 		this.dtCreated = dtCreated;
 	}
 

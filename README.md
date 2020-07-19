@@ -35,6 +35,10 @@ http://localhost:8080/getByAge/30/40
 ```
 http://localhost:8080/delete
 ```
+7. Spring-data Elasticsearch example:
+```
+http://localhost:8080/getByName/Ramit
+```
 
 **References:**
 
