@@ -89,7 +89,8 @@ public class PeopleController {
 	@ResponseBody
 	public List<Person> getByAgeName(@PathVariable("name") String name) throws IOException{
 		repo.findByName(name, PageRequest.of(0, 10));
-		Page<Person> result = repo.findByName(name, PageRequest.of(0, 10));
+		//Page<Person> result = repo.findByName(name, PageRequest.of(0, 10));
+		Page<Person> result = repo.findByPersonNameUsingCustomQuery(name, PageRequest.of(0, 10));
 		return result.toList();
 	}
 	

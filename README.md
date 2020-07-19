@@ -39,6 +39,8 @@ http://localhost:8080/delete
 ```
 http://localhost:8080/getByName/Ramit
 ```
+ElasticsearchRepository itself extends PagingAndSortingRepository, hence the results are pageable. You can either query from spring-data queries or by custom queries. PeopleController -> getByAgeName() has both functions call (one commented out). You can comment one, uncomment the other to still get the same result.
+
 
 **References:**
 

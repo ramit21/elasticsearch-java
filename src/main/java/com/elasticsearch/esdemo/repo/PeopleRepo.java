@@ -12,5 +12,5 @@ public interface PeopleRepo extends ElasticsearchRepository<Person, String> {
 	Page<Person> findByName(String name, Pageable pageable);
 
 	@Query("{\"bool\": {\"must\": [{\"match\": {\"name\": \"?0\"}}]}}")
-	Page<Person> findByAuthorsNameUsingCustomQuery(String name, Pageable pageable);
+	Page<Person> findByPersonNameUsingCustomQuery(String name, Pageable pageable);
 }
