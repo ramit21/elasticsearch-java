@@ -46,5 +46,8 @@ ElasticsearchRepository itself extends PagingAndSortingRepository, hence the res
 
 https://github.com/eugenp/tutorials/tree/master/persistence-modules/spring-data-elasticsearch
 
+Theory: https://github.com/ramit21/ELK
+
+ES Searching: https://www.baeldung.com/spring-data-elasticsearch-queries
 
 
