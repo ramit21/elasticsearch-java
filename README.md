@@ -3,18 +3,17 @@ POC to access es cluster using java
 
 Steps to run this POC:
 
-1. Setup ElasticSearch on your system. If using docker, then run the below command to spin up a container of ElasticSearch:
+1. Setup ElasticSearch on your system. If using docker, then run the below command to spin up a container of ElasticSearch and verify installation by hitting the ES url:
 ```
 docker run -d --name es762 -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.6.2
-```
-Verify ES installation by hitting the url:
-```
+
 http://localhost:9200/
 ```
 
-You may also choose to setup Kibana using docker with below command, linking it with your elastic search container, and then hit the url to see the UI:
+You may also choose to setup Kibana using docker with below command, linking it with your elastic search container, and then hit the url to see the UI. Linking to ES can be done using the container name or the id.
 ```
-docker run --link YOUR_ELASTICSEARCH_CONTAINER_NAME_OR_ID:elasticsearch -p 5601:5601 kibana:6.8.10
+docker run --name kibana762 --link es762:elasticsearch -p 5601:5601 kibana:6.8.10
+
 http://localhost:5601/
 ```
 
