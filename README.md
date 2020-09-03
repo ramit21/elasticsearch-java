@@ -22,7 +22,7 @@ http://localhost:5601/
 ```
 http://localhost:8080/create/Ramit/21
 ```
-4. Fetch data from ES:
+4. Fetch data from ES index:
 ```
 http://localhost:8080/getAll
 ```
@@ -34,7 +34,7 @@ http://localhost:8080/getByAge/30/40
 ```
 http://localhost:8080/delete
 ```
-7. Spring-data Elasticsearch example:
+7. Spring-data-elasticsearch example:
 ```
 http://localhost:8080/getByName/Ramit
 ```
@@ -43,10 +43,10 @@ ElasticsearchRepository itself extends PagingAndSortingRepository, hence the res
 
 **References:**
 
-https://github.com/eugenp/tutorials/tree/master/persistence-modules/spring-data-elasticsearch
-
 Theory: https://github.com/ramit21/ELK
 
-ES Searching: https://www.baeldung.com/spring-data-elasticsearch-queries
+ES Search/Analyzers/Aggregation: https://www.baeldung.com/spring-data-elasticsearch-queries
+
+https://github.com/eugenp/tutorials/tree/master/persistence-modules/spring-data-elasticsearch
 
 

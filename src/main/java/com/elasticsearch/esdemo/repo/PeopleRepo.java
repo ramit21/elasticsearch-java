@@ -9,8 +9,10 @@ import com.elasticsearch.esdemo.model.Person;
 
 public interface PeopleRepo extends ElasticsearchRepository<Person, String> {
 
+	//spring provided query
 	Page<Person> findByName(String name, Pageable pageable);
 
+	//custom query
 	@Query("{\"bool\": {\"must\": [{\"match\": {\"name\": \"?0\"}}]}}")
 	Page<Person> findByPersonNameUsingCustomQuery(String name, Pageable pageable);
 }

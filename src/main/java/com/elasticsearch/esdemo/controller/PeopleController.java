@@ -85,6 +85,7 @@ public class PeopleController {
 		return results;
 	}
 	
+	//Search using spring-data-elastisearch
 	@RequestMapping(value="/getByName/{name}")
 	@ResponseBody
 	public List<Person> getByAgeName(@PathVariable("name") String name) throws IOException{
