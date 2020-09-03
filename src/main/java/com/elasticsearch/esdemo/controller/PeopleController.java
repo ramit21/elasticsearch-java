@@ -106,6 +106,7 @@ public class PeopleController {
 	
 	private IndexResponse createDataintoEs(String name, String age){
 		System.out.println("Inserting json data into ES .... ");
+		
 		try{
 		  //Build a json object	
 		  XContentBuilder builder = XContentFactory.jsonBuilder()
