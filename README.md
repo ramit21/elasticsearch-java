@@ -45,6 +45,10 @@ ElasticsearchRepository itself extends PagingAndSortingRepository, hence the res
 
 Theory: https://github.com/ramit21/ELK
 
+copy_to: https://www.elastic.co/guide/en/elasticsearch/reference/current/copy-to.html
+
+https://dzone.com/articles/23-useful-elasticsearch-example-queries
+
 ES Search/Analyzers/Aggregation: https://www.baeldung.com/spring-data-elasticsearch-queries
 
 https://github.com/eugenp/tutorials/tree/master/persistence-modules/spring-data-elasticsearch
